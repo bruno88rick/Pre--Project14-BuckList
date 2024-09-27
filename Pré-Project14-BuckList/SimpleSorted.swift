@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SimpleSorted.swift
 //  Pré-Project14-BuckList
 //
 //  Created by Bruno Oliveira on 24/09/24.
@@ -10,23 +10,20 @@
  So, in Swift we expect this kind of code to Just Work:
  */
 
-
 import SwiftUI
 
-struct ContentView: View {
-    @State private var showingSheet = false
+struct SimpleSorted: View {
+    let values = [1, 5 ,3, 6, 2, 9].sorted()
     
     var body: some View {
-        Button("ShowingSheet") {
-            showingSheet.toggle()
+        List(values, id: \.self) {
+            Text(String($0))
         }
-    
-        .sheet(isPresented: $showingSheet) {
-            AuthenticationWithFaceAndTouchIID()
-        }
-        
+        .padding()
     }
 }
+
+//We don’t need to tell sorted() how it should work, because it understands how arrays of integers work
 
 #Preview {
     ContentView()
